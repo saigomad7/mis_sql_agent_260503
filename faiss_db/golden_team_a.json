@@ -1,0 +1,65 @@
+[
+  {
+    "id": "a1fc5386-d383-4686-a22d-199f7e3e568e",
+    "question": "고객별 총 구매금액을 높은 순으로",
+    "sql": "SELECT c.name AS 고객명, SUM(oi.unit_price * oi.quantity) AS 총구매금액\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nJOIN order_items oi ON o.order_id = oi.order_id\nWHERE o.status = 'completed'\nGROUP BY c.name ORDER BY 총구매금액 DESC;",
+    "description": "",
+    "created_at": "2026-05-02T23:27:41.325308"
+  },
+  {
+    "id": "88c82bdd-a012-4f07-98ac-a9249d71eade",
+    "question": "카테고리별 매출 합계",
+    "sql": "SELECT cat.category_name AS 카테고리, SUM(oi.unit_price * oi.quantity) AS 총매출\nFROM categories cat\nJOIN products p ON cat.category_id = p.category_id\nJOIN order_items oi ON p.product_id = oi.product_id\nJOIN orders o ON oi.order_id = o.order_id\nWHERE o.status = 'completed'\nGROUP BY cat.category_name ORDER BY 총매출 DESC;",
+    "description": "",
+    "created_at": "2026-05-02T23:27:42.093351"
+  },
+  {
+    "id": "bccfd9ce-3249-424c-9308-bbd8d84cdc08",
+    "question": "VIP 이상 고객이 구매한 상품과 카테고리",
+    "sql": "SELECT c.name AS 고객명, c.grade AS 등급, p.product_name AS 상품명,\n       cat.category_name AS 카테고리, oi.quantity AS 수량\nFROM customers c\nJOIN orders o ON c.customer_id = o.customer_id\nJOIN order_items oi ON o.order_id = oi.order_id\nJOIN products p ON oi.product_id = p.product_id\nJOIN categories cat ON p.category_id = cat.category_id\nWHERE c.grade IN ('VIP','VVIP') AND o.status = 'completed'\nORDER BY c.grade DESC, c.name;",
+    "description": "",
+    "created_at": "2026-05-02T23:27:45.073112"
+  },
+  {
+    "id": "6206c005-aac6-4719-9515-1426e0df9513",
+    "question": "고객별 총 구매금액을 높은 순으로 알려줘",
+    "sql": "SELECT c.name AS 고객명, SUM(oi.unit_price * oi.quantity) AS 총구매금액 FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id WHERE o.status = 'completed' GROUP BY c.name ORDER BY 총구매금액 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T00:04:09.828969"
+  },
+  {
+    "id": "c7bce5c2-827d-45b2-8455-909f89771b67",
+    "question": "그 중에서 VIP 등급 고객만 따로 보여줘",
+    "sql": "SELECT c.name AS 고객명, SUM(oi.unit_price * oi.quantity) AS 총구매금액 FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id WHERE o.status = 'completed' AND c.grade = 'VIP' GROUP BY c.name ORDER BY 총구매금액 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T00:06:44.746837"
+  },
+  {
+    "id": "65eb7a0d-e998-444b-ad5d-81fbb09627f9",
+    "question": "카테고리별 매출 합계를 내림차순으로",
+    "sql": "SELECT cat.category_name AS 카테고리, SUM(oi.unit_price * oi.quantity) AS 총매출 FROM categories cat JOIN products p ON cat.category_id = p.category_id JOIN order_items oi ON p.product_id = oi.product_id JOIN orders o ON oi.order_id = o.order_id WHERE o.status = 'completed' GROUP BY cat.category_name ORDER BY 총매출 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T00:06:55.862433"
+  },
+  {
+    "id": "b4384177-4498-49b7-9fbc-b53a4d175183",
+    "question": "고객별 총 구매금액을 높은 순으로 알려줘",
+    "sql": "SELECT c.name AS 고객명, SUM(oi.unit_price * oi.quantity) AS 총구매금액 FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id WHERE o.status = 'completed' GROUP BY c.name ORDER BY 총구매금액 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T08:36:37.630564"
+  },
+  {
+    "id": "ab2de494-5f61-4ab8-a500-147bef34423a",
+    "question": "그 중에서 VIP 등급 고객만 따로 보여줘",
+    "sql": "SELECT c.name AS 고객명, SUM(oi.unit_price * oi.quantity) AS 총구매금액 FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id WHERE o.status = 'completed' AND c.grade = 'VIP' GROUP BY c.name ORDER BY 총구매금액 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T08:37:01.483620"
+  },
+  {
+    "id": "c56cca19-7e42-497f-8be3-08d38438c992",
+    "question": "카테고리별 매출 합계를 내림차순으로",
+    "sql": "SELECT cat.category_name AS 카테고리, SUM(oi.unit_price * oi.quantity) AS 총매출 FROM categories cat JOIN products p ON cat.category_id = p.category_id JOIN order_items oi ON p.product_id = oi.product_id JOIN orders o ON oi.order_id = o.order_id WHERE o.status = 'completed' GROUP BY cat.category_name ORDER BY 총매출 DESC;",
+    "description": "",
+    "created_at": "2026-05-03T08:37:17.899308"
+  }
+]
