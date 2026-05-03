@@ -1,4 +1,4 @@
-"""
+""" 
 schema_embedder.py — FAISS 기반 Schema RAG
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 초기화 : setup_rag.py 에서 1회 실행
@@ -11,7 +11,11 @@ from vector_store import get_embeddings, schema_path, faiss_exists
 
 
 # ── 인덱스 구축 ───────────────────────────────────────────────
-"""TABLE_DEFINITIONS를 FAISS에 임베딩 저장. 기존 인덱스를 덮어쓰므로 스키마 변경 시 재실행.반환: 저장된 테이블 수"""
+"""TABLE_DEFINITIONS를 FAISS에 임베딩 저장. 
+  기존 인덱스를 덮어쓰므로 스키마 변경 시 재실행.
+  반환: 저장된 테이블 수"""
+#team_id = TEAM_ID
+#table_definitions = TABLE_DEFINITIONS
 def build_schema_index(team_id: str, table_definitions: dict) -> int:
     docs, metas = [], []
     for table_name, tbl_def in table_definitions.items():
@@ -36,7 +40,8 @@ def build_schema_index(team_id: str, table_definitions: dict) -> int:
 
 
 # ── 관련 테이블 검색 ──────────────────────────────────────────
-"""질의와 cosine 유사도가 높은 테이블 이름 목록 반환. 인덱스 미존재 시 빈 리스트 반환 (호출부에서 fallback 처리)."""
+"""질의와 cosine 유사도가 높은 테이블 이름 목록 반환. 
+   인덱스 미존재 시 빈 리스트 반환 (호출부에서 fallback 처리)."""
 def search_similar_tables(team_id: str, user_query: str, n_results: int = 4,) -> list:
     path = schema_path(team_id)
     if not faiss_exists(path):

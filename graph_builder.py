@@ -1,9 +1,9 @@
-"""
+""" 
 graph_builder.py — LangGraph 워크플로우 구성
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 노드 순서:
-  domain → schema_rag → sql_gen → sql_valid
+  domain → schema_rag(schema) → sql_gen ↔ sql_valid
        → human_review → sql_exec → formatter → feedback → END
 
 조건부 엣지:

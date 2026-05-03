@@ -9,7 +9,7 @@ setup_rag.py — Schema RAG + Golden Query 초기화 (1회 실행)
   1. faiss_db/schema_team_a/  — 테이블 설명 FAISS 인덱스 빌드
   2. faiss_db/golden_team_a/  — QUERY_EXAMPLES를 Golden Query로 시드
 """
-
+ 
 import os
 os.chdir("C:\\Users\\USER\\Documents\\agent\\sql_agent\\mis_sql_agent_v3")
 
@@ -17,11 +17,11 @@ import argparse
 import shutil
 import os
 
-from schema_embedder   import build_schema_index
-from golden_query_store import seed_golden_queries
 from vector_store      import FAISS_DIR, schema_path, golden_path
 from domain_team_a     import (TEAM_ID, TABLE_DEFINITIONS, QUERY_EXAMPLES,)
+from schema_embedder   import build_schema_index
 
+from golden_query_store import seed_golden_queries
 
 #team_id = TEAM_ID
 def reset_indices(team_id: str):

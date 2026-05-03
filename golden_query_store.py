@@ -1,4 +1,4 @@
-"""
+""" 
 golden_query_store.py — FAISS 기반 Golden Query 저장소
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 설계:
@@ -12,6 +12,8 @@ golden_query_store.py — FAISS 기반 Golden Query 저장소
 
 FAISS는 삭제 연산이 없으므로 JSON 변경 시 인덱스 재빌드.
 """
+import os
+os.chdir("C:\\Users\\USER\\Documents\\agent\\sql_agent\\mis_sql_agent_v3")
 
 import os
 import json

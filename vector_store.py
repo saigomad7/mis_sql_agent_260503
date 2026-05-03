@@ -1,5 +1,5 @@
-"""
-vector_store.py — FAISS 벡터 스토어 공통 설정
+""" 
+vector_store.py — FAISS 벡터 스토어 공통 설정 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 저장 구조:
   ./faiss_db/
@@ -8,11 +8,18 @@ vector_store.py — FAISS 벡터 스토어 공통 설정
 
 사용 패키지: faiss-cpu, langchain-community, langchain-openai
 """
+import os
+os.chdir("C:\\Users\\USER\\Documents\\agent\\sql_agent\\mis_sql_agent_v3")
 
 import os
 from langchain_openai import OpenAIEmbeddings
 
-FAISS_DIR = os.path.join(os.path.dirname(__file__), "faiss_db")
+try:
+    FAISS_DIR = os.path.join(os.path.dirname(__file__), "faiss_db")
+except NameError:
+    FAISS_DIR = os.path.join(os.getcwd(), "faiss_db")
+
+print(f"FAISS Directory: {FAISS_DIR}")
 
 
 def get_embeddings() -> OpenAIEmbeddings:

@@ -9,7 +9,7 @@ import domain_team_a
 
 TEAM_REGISTRY = {
     "team_a": domain_team_a,
-    # "team_b": domain_team_b,  ← 확장 시 추가
+    #"team_b": domain_team_b #확장 시 추가
 }
 
 

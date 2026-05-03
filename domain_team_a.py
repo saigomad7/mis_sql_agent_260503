@@ -5,7 +5,7 @@ domain_team_a.py — Team A 도메인 설정
   cp domain_team_a.py domain_team_b.py
   → domain_team_b.py 내용 수정
   → main.py 상단에서 import 대상만 변경
-
+ 
 LLM이 DB를 이해하기 위한 5가지 정보:
   1. TABLE_DEFINITIONS   : 테이블·컬럼 비즈니스 설명
   2. TABLE_RELATIONSHIPS : JOIN 경로

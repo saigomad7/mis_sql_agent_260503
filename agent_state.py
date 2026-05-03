@@ -1,5 +1,5 @@
 """
-agent_state.py — GraphState 확장 (v3)
+agent_state.py — GraphState 확장 (v3) 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 v2 대비 신규 필드:
   Schema RAG  : relevant_tables, similar_examples
@@ -9,7 +9,6 @@ v2 대비 신규 필드:
 """
 
 from typing import TypedDict
-
   
 class GraphState(TypedDict, total=False):
     # ── 입력 ─────────────────────────────────────────────────

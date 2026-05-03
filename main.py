@@ -1,4 +1,4 @@
-"""
+""" 
 main.py — MI SQL Agent v3  (Spyder 셀 실행)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  
@@ -26,7 +26,7 @@ assert os.getenv("OPENAI_API_KEY"), "OPENAI_API_KEY가 설정되지 않았습니
 # %%  Cell 1: 그래프 임포트 및 멀티턴 상태 초기화
 from graph_builder import graph
 from agent_state   import initial_state
-from display_utils import response_to_df #display_result
+from display_utils import response_to_df, print_response, build_summary_df
 
 conversation_history = []   # 세션 전체에서 누적
 turn_count           = 0
@@ -67,7 +67,10 @@ result = graph.invoke(state)
 conversation_history = result.get("conversation_history", conversation_history)
 turn_count           = result.get("turn_count", turn_count)
 
-#display_result(result)
+response_to_df(result)
+print_response(result)
+
+
 
 # %%  Cell 4: 자유 질문 — 원하는 질문으로 교체
 USER_QUERY = "카테고리별 매출 합계를 내림차순으로"
@@ -84,7 +87,8 @@ result = graph.invoke(state)
 conversation_history = result.get("conversation_history", conversation_history)
 turn_count           = result.get("turn_count", turn_count)
 
-#display_result(result)
+response_to_df(result)
+print_response(result)
 
 # %%  Cell 5: Golden Query 목록 확인
 from golden_query_store import list_golden_queries
